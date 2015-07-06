@@ -1,2 +1,185 @@
-// calculadora pra somar, multiplicar, subtrair e dividir (por enquanto) 06/07 13:25
-// trying to edit
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace WindowsFormsApplication1
+{
+    public partial class CalculadoraMain : Form
+    {
+        public bool IsDecimal = false;
+        public double A = 0, B = 0, X = 0;
+        public int oper;
+        //oper index: 1=soma 2=subtracao 3=multiplicar 4=dividir
+
+        public CalculadoraMain()
+        {
+            InitializeComponent();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (numberBox.Text == "0")
+                numberBox.Text = "9";
+            else
+                numberBox.Text = "" + numberBox.Text + "9";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (numberBox.Text == "0")
+                numberBox.Text = "8";
+            else
+                numberBox.Text = "" + numberBox.Text + "8";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (numberBox.Text == "0")
+                numberBox.Text = "7";
+            else
+                numberBox.Text = "" + numberBox.Text + "7";
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (numberBox.Text == "0")
+                numberBox.Text = "6";
+            else
+                numberBox.Text = "" + numberBox.Text + "6";
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (numberBox.Text == "0")
+                numberBox.Text = "5";
+            else
+                numberBox.Text = "" + numberBox.Text + "5";
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (numberBox.Text == "0")
+                numberBox.Text = "4";
+            else
+                numberBox.Text = "" + numberBox.Text + "4";
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            if (numberBox.Text == "0")
+                numberBox.Text = "3";
+            else
+                numberBox.Text = "" + numberBox.Text + "3";
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (numberBox.Text == "0")
+                numberBox.Text = "2";
+            else
+                numberBox.Text = "" + numberBox.Text + "2";
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (numberBox.Text == "0")
+                numberBox.Text = "1";
+            else
+                numberBox.Text = "" + numberBox.Text + "1";
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (numberBox.Text == "0")
+                numberBox.Text = "0";
+            else
+                numberBox.Text = "" + numberBox.Text + "0";
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (IsDecimal == false)
+            {
+                IsDecimal = true;
+                numberBox.Text = "" + numberBox.Text + ".";
+            }
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            //store number
+            this.A = Double.Parse(numberBox.Text.ToString());
+            numberBox.Text = "";
+
+            oper = 1;
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            //store number
+            this.A = Double.Parse(numberBox.Text.ToString());
+            numberBox.Text = "";
+
+            oper = 2;
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            //store number
+            this.A = Double.Parse(numberBox.Text.ToString());
+            numberBox.Text = "";
+
+            oper = 3;
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            //store number
+            this.A = Double.Parse(numberBox.Text.ToString());
+            numberBox.Text = "";
+
+            oper = 4;
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            // get oper, get A, do oper, set numberBox
+            try
+            {
+                switch (this.oper)
+                {
+                    case 1: X = this.A + Double.Parse(numberBox.Text.ToString());
+                        break;
+                    case 2: X = this.A - Double.Parse(numberBox.Text.ToString());
+                        break;
+                    case 3: X = this.A * Double.Parse(numberBox.Text.ToString());
+                        break;
+                    case 4: X = this.A / Double.Parse(numberBox.Text.ToString());
+                        break;
+                }
+                numberBox.Text = "" + X;
+            }
+            catch (NullReferenceException) {
+                MessageBox.Show("Selecione uma operação !");
+            }
+            catch (DivideByZeroException){
+                MessageBox.Show("Não divida por zero, seu sapequinha !");
+            }
+
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            this.A = 0;
+            numberBox.Text = 0;
+            X = 0;
+        }
+    }
+}
